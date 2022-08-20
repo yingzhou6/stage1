@@ -6,7 +6,6 @@ from dash.dependencies import Output, Input
 import plotly.express as px
 import dash_bootstrap_components as dbc
 import pandas_datareader as web
-import multiprocessing as mp
 import time as tm
 import datetime as dt
 
