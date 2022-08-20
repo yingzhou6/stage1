@@ -1,1 +1,1 @@
-web: gunicorn stage123.Dashboard:Dashboard
+web: gunicorn Dashboard:stage123
