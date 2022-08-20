@@ -11,7 +11,7 @@ import datetime as dt
 import flask
 import os
 from random import randint
-from app import app, server
+
 
 start_date='2017-08-18'
 end_date=dt.date.today()
@@ -151,6 +151,6 @@ server.secret_key = os.environ.get('secret_key', str(randint(0, 1000000)))
 app = dash.Dash(__name__, server=server)
 
 
-print(df1['Symbols'])
+
 if __name__ == '__main__':
     app.run_server(debug=True, port=8000)
