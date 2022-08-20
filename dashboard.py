@@ -153,8 +153,7 @@ def update_graph(stock_slctd):
     return fighist
 
 
-app=dash.Dash(__name__)   
-server=app.server
+
 
 print(df1['Symbols'])
 if __name__ == '__main__':
