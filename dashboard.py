@@ -11,6 +11,7 @@ import datetime as dt
 import flask
 import os
 from random import randint
+from app import app, server
 
 start_date='2017-08-18'
 end_date=dt.date.today()
