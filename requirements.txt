@@ -9,3 +9,4 @@ whitenoise==6.2.0
 pandas==1.4.3
 dash==2.6.1
 dash_bootstrap_components==1.2.1
+pandas_datareader==0.10.0
