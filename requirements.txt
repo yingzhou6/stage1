@@ -7,3 +7,5 @@ sqlparse==0.4.2
 tzdata==2022.2
 whitenoise==6.2.0
 pandas==1.4.3
+dash==2.6.1
+ploty==5.10.0
