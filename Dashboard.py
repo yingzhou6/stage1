@@ -97,7 +97,7 @@ app.layout = dbc.Container([
 ])
 
 
-# Line chart - Single
+
 @app.callback(
     Output('line-fig', 'figure'),
     Input('my-dpdn', 'value')
@@ -107,7 +107,7 @@ def update_graph(stock_slctd):
     figln = px.line(dff, x='Date', y='Price')
     return figln
 
-# Line chart - multiple
+
 @app.callback(
     Output('line-fig2', 'figure'),
     Input('my-dpdn2', 'value')
@@ -118,7 +118,7 @@ def update_graph(stock_slctd):
     return figln2
 
 
-# Histogram
+
 @app.callback(
     Output('my-hist', 'figure'),
     Input('my-checklist', 'value')
@@ -130,7 +130,7 @@ def update_graph(stock_slctd):
     return fighist
 
 
-#scatterplot
+
 @app.callback(
     Output('my-bar', 'figure'),
     Input('my-checklist2', 'value')
