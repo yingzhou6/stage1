@@ -1,1 +1,1 @@
-web: gunicorn dashboard:app.run_server -b localhost:8000
+web: gunicorn dashboard:app -b localhost:8000
