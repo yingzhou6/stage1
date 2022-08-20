@@ -34,25 +34,6 @@ df2 = df1.rename(columns={0:'Price'})
 df_total = pd.concat([df2,df_ret2,Vol2],axis=1)
 df_total
 
-newframe = pd.DataFrame.copy(df)
-
-def statistics(df):
-    for i in df:
-        df[i+'daily_rets'] = df[i].pct_change()
-        df[i+'momentum'] = df[i]/df[i].shift(1)
-        df[i+'21_days_MA'] = df[i].rolling(window=21).mean()
-        df[i+'difference']=df[i].diff()
-
-
-t = tm.time()
-statistics(newframe)
-print(tm.time()-t)
-
-t1 = tm.time()
-p = mp.Process(target = statistics, args =(newframe))
-p.start()
-print(tm.time()-t1)
-
 
 def correlation_from_covariance(covariance):
     v = np.sqrt(np.diag(covariance))
