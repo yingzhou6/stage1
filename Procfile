@@ -1,1 +1,1 @@
-web: gunicorn stage1234.wsgi
+web: gunicorn stage1234:app
