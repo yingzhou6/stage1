@@ -8,10 +8,6 @@ import dash_bootstrap_components as dbc
 import pandas_datareader as web
 import time as tm
 import datetime as dt
-import flask
-import os
-from random import randint
-
 
 start_date='2017-08-18'
 end_date=dt.date.today()
@@ -36,6 +32,19 @@ df2 = df1.rename(columns={0:'Price'})
 
 df_total = pd.concat([df2,df_ret2,Vol2],axis=1)
 df_total
+
+newframe = pd.DataFrame.copy(df)
+
+def statistics(df):
+    for i in df:
+        df[i+'daily_rets'] = df[i].pct_change()
+        df[i+'momentum'] = df[i]/df[i].shift(1)
+        df[i+'21_days_MA'] = df[i].rolling(window=21).mean()
+        df[i+'difference']=df[i].diff()
+
+
+
+
 
 
 def correlation_from_covariance(covariance):
@@ -100,7 +109,7 @@ app.layout = dbc.Container([
 ])
 
 
-
+# Line chart - Single
 @app.callback(
     Output('line-fig', 'figure'),
     Input('my-dpdn', 'value')
@@ -110,7 +119,7 @@ def update_graph(stock_slctd):
     figln = px.line(dff, x='Date', y='Price')
     return figln
 
-
+# Line chart - multiple
 @app.callback(
     Output('line-fig2', 'figure'),
     Input('my-dpdn2', 'value')
@@ -121,7 +130,7 @@ def update_graph(stock_slctd):
     return figln2
 
 
-
+# Histogram
 @app.callback(
     Output('my-hist', 'figure'),
     Input('my-checklist', 'value')
@@ -131,9 +140,7 @@ def update_graph(stock_slctd):
     dff = dff[dff['Date']=='2022-08-18']
     fighist = px.histogram(dff, x='Symbols', y='Volume')
     return fighist
-
-
-
+#scatterplot
 @app.callback(
     Output('my-bar', 'figure'),
     Input('my-checklist2', 'value')
@@ -146,11 +153,6 @@ def update_graph(stock_slctd):
     return fighist
 
 
-server = flask.Flask(__name__)
-server.secret_key = os.environ.get('secret_key', str(randint(0, 1000000)))
-app = dash.Dash(__name__, server=server)
-
-
-
+print(df1['Symbols'])
 if __name__ == '__main__':
     app.run_server(debug=True, port=8000)
