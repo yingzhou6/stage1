@@ -8,6 +8,9 @@ import dash_bootstrap_components as dbc
 import pandas_datareader as web
 import time as tm
 import datetime as dt
+import flask
+import os
+
 
 start_date='2017-08-18'
 end_date=dt.date.today()
@@ -140,6 +143,11 @@ def update_graph(stock_slctd):
                          y=df.AMZN.pct_change().fillna(0)).update_layout(
                              xaxis_title="SPY Returns", yaxis_title="AMZN Returns")
     return fighist
+
+
+server = flask.Flask(__name__)
+server.secret_key = os.environ.get('secret_key', str(randint(0, 1000000)))
+app = dash.Dash(__name__, server=server)
 
 
 print(df1['Symbols'])
