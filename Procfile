@@ -1,1 +1,1 @@
-web: gunicorn Dashboard:app
+web: runserver Dashboard:app
