@@ -53,11 +53,6 @@ p = mp.Process(target = statistics, args =(newframe))
 p.start()
 print(tm.time()-t1)
 
-newframe.to_csv('my_stocks')
-
-update_price = web.get_data_yahoo(tickers, start = dt.date.today(), end = dt.date.today())['Adj Close']
-update_price.to_csv('my_stocks.csv')
-
 
 def correlation_from_covariance(covariance):
     v = np.sqrt(np.diag(covariance))
