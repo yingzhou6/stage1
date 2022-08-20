@@ -1,1 +1,1 @@
-web: python Dashboard.py
+web: gunicorn stage12.wsgi
