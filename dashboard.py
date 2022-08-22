@@ -59,6 +59,8 @@ fig_corr = px.imshow(correlation_from_covariance(df.pct_change().dropna().cov())
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.LUMEN],
                 meta_tags=[{'name': 'viewport',
                             'content': 'width=device-width, initial-scale=1.0'}])
+server = app.server
+
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(html.H1("Stage1 Dashboard",
